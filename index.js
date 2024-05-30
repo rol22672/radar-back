@@ -1,9 +1,23 @@
 const express = require('express');
-const http = require('http');
+const fs = require('fs');
+const http = require('https');
 const socketIo = require('socket.io');
 
+// const options = {
+//   key: fs.readFileSync('llave.key'),
+//   cert: fs.readFileSync('certificate.crt'),
+//   ca: fs.readFileSync('bundle.crt'), 
+// };
+
 const app = express();
+
+// Ruta GET de prueba
+app.get('/test', (req, res) => {
+  res.send('Server is running correctly.');
+});
+
 const server = http.createServer(app);
+
 const io = socketIo(server, {
   cors: {
     origin: '*',
