@@ -1,33 +1,20 @@
 const express = require('express');
 const fs = require('fs');
-const http = require('https');
+const http = require('http');
 const socketIo = require('socket.io');
-const cors = require('cors');
 
-// const options = {
-//   key: fs.readFileSync('llave.key'),
-//   cert: fs.readFileSync('certificate.crt'),
-//   ca: fs.readFileSync('bundle.crt'), 
-// };
+const cors = require("cors");
 
 const app = express();
 
-const corsOptions = {
-  origin: '*', // Reemplaza con tu dominio
-  methods: ['GET', 'POST'],
-  allowedHeaders: ['*'],
-  credentials: true,
-};
-
-
-app.use(cors(corsOptions));
+app.use(cors);
 
 // Ruta GET de prueba
 app.get('/test', (req, res) => {
   res.send('Server is running correctly.');
 });
 
-const server = http.createServer(app);
+const server = http.createServer( app);
 
 const io = socketIo(server, {
   cors: {
