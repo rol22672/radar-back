@@ -12,8 +12,15 @@ const cors = require('cors');
 
 const app = express();
 
+const corsOptions = {
+  origin: '*', // Reemplaza con tu dominio
+  methods: ['GET', 'POST'],
+  allowedHeaders: ['*'],
+  credentials: true,
+};
 
-app.use(cors());
+
+app.use(cors(corsOptions));
 
 // Ruta GET de prueba
 app.get('/test', (req, res) => {
