@@ -2,6 +2,7 @@ const express = require('express');
 const fs = require('fs');
 const http = require('https');
 const socketIo = require('socket.io');
+const cors = require('cors');
 
 // const options = {
 //   key: fs.readFileSync('llave.key'),
@@ -10,6 +11,9 @@ const socketIo = require('socket.io');
 // };
 
 const app = express();
+
+
+app.use(cors());
 
 // Ruta GET de prueba
 app.get('/test', (req, res) => {
